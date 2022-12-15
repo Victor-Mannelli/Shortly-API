@@ -1,0 +1,27 @@
+{
+  "name": "projeto17-shortly",
+  "version": "1.0.0",
+  "description": "This is a back-end project, where I built and modeled a ralational database using postgresql that shorten URLs.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Victor-Mannelli/projeto17-shortly.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Victor-Mannelli/projeto17-shortly/issues"
+  },
+  "homepage": "https://github.com/Victor-Mannelli/projeto17-shortly#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "joi": "^17.7.0",
+    "pg": "^8.8.0"
+  }
+}
