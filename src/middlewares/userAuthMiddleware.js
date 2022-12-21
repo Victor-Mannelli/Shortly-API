@@ -34,15 +34,15 @@ export async function validateSignIn(req, res, next) {
 
 	try {
 		const user = await repository.checkEmail(req.body.email);
-		res.locals.user = user;
 		if (user.rows.length === 0) {
 			return res.status(401).send({ message: "This email is not registered" });
 		}
-
+		
 		if (!bcrypt.compareSync(req.body.password, user.rows[0].password)) {
 			return res.status(401).send({ message: "Password is incorrect" });
 		}
-
+		
+		res.locals.user = user;
 		next();
 	} catch (error) {
 		console.log(error);
