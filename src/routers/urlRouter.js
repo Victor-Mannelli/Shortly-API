@@ -5,5 +5,6 @@ import * as urlController from "../controllers/urlController.js"
 const urlRouter = Router();
 
 urlRouter.post("/urls/shorten", urlAuth.validateUrl, urlController.shortenUrl);
+urlRouter.get("/urls/:id", urlAuth.validateUrlFilter , urlController.urlFilter)
 
 export default urlRouter;
