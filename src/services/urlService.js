@@ -5,7 +5,7 @@ export async function shortenUrl({ url, shortenUrl, user }) {
 		await urlRepository.shortenUrl({ url, shortenUrl, user });
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return;
 	}
 }
 export async function filteredUrl(id) {
@@ -13,7 +13,7 @@ export async function filteredUrl(id) {
 		return await urlRepository.urlFilter(id);
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return;
 	}
 }
 export async function addVisitors(shortUrl) {
@@ -21,7 +21,7 @@ export async function addVisitors(shortUrl) {
 		await urlRepository.addVisitors(shortUrl);
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return;
 	}
 }
 export async function getUrl(shortUrl) {
@@ -29,7 +29,7 @@ export async function getUrl(shortUrl) {
 		return await urlRepository.getUrl(shortUrl);
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return;
 	}
 }
 export async function deleteUrl(id) {
@@ -37,6 +37,6 @@ export async function deleteUrl(id) {
 		return await urlRepository.deleteUrl(id);
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return;
 	}
 }

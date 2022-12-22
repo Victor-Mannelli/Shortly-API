@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import * as userService from "../services/userService.js";
+import * as userService from "../services/userAuthService.js";
 
 export async function singUp(req, res) {
 	try {
@@ -10,7 +10,6 @@ export async function singUp(req, res) {
 		return res.sendStatus(500);
 	}
 }
-
 export async function singIn(_req, res) {
 	try {
 		const userId = res.locals.user.rows[0].user_id;

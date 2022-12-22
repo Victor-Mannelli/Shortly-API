@@ -1,5 +1,5 @@
-import * as userSchemas from "../schemas/userSchemas.js";
-import * as repository from "../repositories/userRepository.js";
+import * as userSchemas from "../schemas/userAuthSchemas.js";
+import * as repository from "../repositories/userAuthRepository.js";
 import bcrypt from "bcrypt";
 
 export async function validateSignUp(req, res, next) {
@@ -22,7 +22,6 @@ export async function validateSignUp(req, res, next) {
 		res.sendStatus(500);
 	}
 }
-
 export async function validateSignIn(req, res, next) {
 	const { error } = userSchemas.signInSchema.validate(req.body, {
 		abortEarly: true,

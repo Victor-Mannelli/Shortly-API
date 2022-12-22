@@ -17,6 +17,7 @@ export async function validateUrl(req, res, next) {
 	try {
 		const token = header.replace("Bearer ", "");
 		const user = await repository.checkAuthHeader(token);
+		res.locals.user = user;
 		if (user.rows.length === 0) {
 			res
 				.status(401)
@@ -27,7 +28,6 @@ export async function validateUrl(req, res, next) {
 		console.log(error);
 		return res.sendStatus(500);
 	}
-	res.locals.user = user;
 	next();
 }
 export async function validateUrlFilter(req, res, next) {

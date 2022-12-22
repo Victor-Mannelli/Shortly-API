@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import * as userRepository from "../repositories/userRepository.js";
+import * as userRepository from "../repositories/userAuthRepository.js";
 
 export async function createNewUser({ email, username, password }) {
 	try {
@@ -7,7 +7,7 @@ export async function createNewUser({ email, username, password }) {
 		await userRepository.createNewUser({ email, username, hashedPassword });
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return
 	}
 }
 export async function login({ userId, token }) {
@@ -15,6 +15,6 @@ export async function login({ userId, token }) {
 		await userRepository.login({ userId, token });
 	} catch (error) {
 		console.log(error);
-		return res.sendStatus(500);
+		return
 	}
 }
