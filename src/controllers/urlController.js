@@ -15,7 +15,6 @@ export async function shortenUrl(req, res) {
 		return res.sendStatus(500);
 	}
 }
-
 export async function urlFilter(req, res) {
 	try {
 		const filteredUrl = await urlService.filteredUrl(req.params.id);
@@ -26,6 +25,16 @@ export async function urlFilter(req, res) {
 		};
 
 		res.status(200).send(response);
+	} catch (error) {
+		console.log(error);
+		return res.sendStatus(500);
+	}
+}
+export async function openShortUrl(req, res) {
+	try {
+		await urlService.addVisitors(req.params.shortUrl);
+		const url = await urlService.getUrl(req.params.shortUrl)
+		res.redirect(url.rows[0].link)
 	} catch (error) {
 		console.log(error);
 		return res.sendStatus(500);

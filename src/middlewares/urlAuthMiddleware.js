@@ -50,3 +50,25 @@ export async function validateUrlFilter(req, res, next) {
 	}
 	next();
 }
+
+export async function validateShortUrl(req, res, next) {
+	const { error } = urlSchemas.shortUrlSchema.validate(req.params, {
+		abortEarly: true,
+	});
+	if (error) {
+		const errors = error.details.map((detail) => detail.message);
+		return res.status(422).send(errors);
+	}
+
+	try {
+		const shortUrl = await repository.checkShortUrl(req.params.shortUrl);
+		if (shortUrl.rows.length === 0) {
+			return res.status(404).send({ message: "This shortUrl doesn't exist" });
+		}
+
+		next();
+	} catch (error) {
+		console.log(error);
+		return res.sendStatus(500);
+	}
+}
