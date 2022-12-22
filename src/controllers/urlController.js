@@ -33,8 +33,17 @@ export async function urlFilter(req, res) {
 export async function openShortUrl(req, res) {
 	try {
 		await urlService.addVisitors(req.params.shortUrl);
-		const url = await urlService.getUrl(req.params.shortUrl)
-		res.redirect(url.rows[0].link)
+		const url = await urlService.getUrl(req.params.shortUrl);
+		res.redirect(url.rows[0].link);
+	} catch (error) {
+		console.log(error);
+		return res.sendStatus(500);
+	}
+}
+export async function urlDeletion(req, res) {
+	try {
+		await urlService.deleteUrl(req.params.id);
+		res.status(204).send({ message: "Url deleted successfully" });
 	} catch (error) {
 		console.log(error);
 		return res.sendStatus(500);

@@ -30,3 +30,18 @@ export async function getUrl(shortUrl) {
 		shortUrl,
 	]);
 }
+export async function getUserByToken(token) {
+	return await connection.query(
+		"SELECT user_id FROM sessions WHERE token = $1",
+		[token]
+	);
+}
+export async function checkOwnership({ link_id, user_id }) {
+	return await connection.query(
+		"SELECT * FROM links WHERE link_id = $1 AND user_id = $2",
+		[link_id, user_id]
+	);
+}
+export async function deleteUrl(id) {
+	await connection.query("DELETE FROM links WHERE link_id = $1", [id]);
+}

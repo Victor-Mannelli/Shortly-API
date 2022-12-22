@@ -32,3 +32,11 @@ export async function getUrl(shortUrl) {
 		return res.sendStatus(500);
 	}
 }
+export async function deleteUrl(id) {
+	try {
+		return await urlRepository.deleteUrl(id);
+	} catch (error) {
+		console.log(error);
+		return res.sendStatus(500);
+	}
+}
