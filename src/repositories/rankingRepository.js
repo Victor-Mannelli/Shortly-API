@@ -8,7 +8,7 @@ export async function getRanking() {
         COUNT(l.link) as "linksCount",
         SUM(l.visitors) as "visitCount"
         FROM users AS u
-        JOIN links AS l ON u.user_id = l.user_id
+        LEFT JOIN links AS l ON u.user_id = l.user_id
         GROUP BY u.user_id
         ORDER BY "visitCount" DESC
         LIMIT 10
